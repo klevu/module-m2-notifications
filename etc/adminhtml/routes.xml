@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<!-- Copyright © Klevu Oy. All rights reserved. See LICENSE.txt for license details. -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="admin">
+        <route id="klevu_notifications" frontName="klevu_notifications">
+            <module name="Klevu_Notifications" before="Magento_Backend"/>
+        </route>
+    </router>
+</config>

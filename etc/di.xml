@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+
+<!-- Copyright © Klevu Oy. All rights reserved. See LICENSE.txt for license details. -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- Preferences -->
+    <preference for="Klevu\Notifications\Api\NotificationRepositoryInterface"
+                type="Klevu\Notifications\Model\NotificationRepository"/>
+
+    <preference for="Klevu\Notifications\Api\Data\NotificationInterface"
+                type="Klevu\Notifications\Model\Notification"/>
+    <preference for="Klevu\Notifications\Api\Data\NotificationSearchResultsInterface"
+                type="Klevu\Notifications\Model\NotificationSearchResults"/>
+
+    <type name="Klevu\Notifications\Model\NotificationRepository">
+        <arguments>
+            <argument name="logger" xsi:type="object">Klevu\Configuration\Logger\Logger</argument>
+        </arguments>
+    </type>
+
+    <type name="Klevu\Notifications\Observer\AddNotification">
+        <arguments>
+            <argument name="logger" xsi:type="object">Klevu\Configuration\Logger\Logger</argument>
+        </arguments>
+    </type>
+    <type name="Klevu\Notifications\Observer\DeleteNotification">
+        <arguments>
+            <argument name="logger" xsi:type="object">Klevu\Configuration\Logger\Logger</argument>
+        </arguments>
+    </type>
+    <type name="Klevu\Notifications\Observer\UpsertNotification">
+        <arguments>
+            <argument name="logger" xsi:type="object">Klevu\Configuration\Logger\Logger</argument>
+        </arguments>
+    </type>
+
+    <type name="Klevu\Notifications\Plugin\Magento\AdminNotification\Model\ResourceModel\System\Message\Collection\Synchronized\AddNotificationsPlugin">
+        <arguments>
+            <argument name="logger" xsi:type="object">Klevu\Configuration\Logger\Logger</argument>
+        </arguments>
+    </type>
+
+    <type name="Klevu\Notifications\ViewModel\System\Config\Information\Notifications">
+        <arguments>
+            <argument name="logger" xsi:type="object">Klevu\Configuration\Logger\Logger</argument>
+        </arguments>
+    </type>
+</config>

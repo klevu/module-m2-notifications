@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<!-- Copyright © Klevu Oy. All rights reserved. See LICENSE.txt for license details. -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="klevu_notifications_addNotification">
+        <observer name="klevu_notifications_addNotification"
+                  instance="Klevu\Notifications\Observer\AddNotification" />
+    </event>
+    <event name="klevu_notifications_upsertNotification">
+        <observer name="klevu_notifications_upsertNotification"
+                  instance="Klevu\Notifications\Observer\UpsertNotification" />
+    </event>
+    <event name="klevu_notifications_deleteNotification">
+        <observer name="klevu_notifications_deleteNotification"
+                  instance="Klevu\Notifications\Observer\DeleteNotification" />
+    </event>
+</config>

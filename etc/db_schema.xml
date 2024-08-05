@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+
+<!-- Copyright © Klevu Oy. All rights reserved. See LICENSE.txt for license details. -->
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="klevu_notification" resource="default" engine="innodb" comment="Klevu Notifications">
+        <column xsi:type="int"
+                name="id"
+                nullable="false"
+                identity="true"
+                comment="Notification Primary Key"/>
+        <column xsi:type="varchar"
+                name="type"
+                length="255"
+                nullable="false"
+                comment="Message identifier" />
+        <column xsi:type="varchar"
+                name="acl_resource"
+                length="63"
+                nullable="false"
+                comment="ACL resource" />
+        <column xsi:type="smallint"
+                name="severity"
+                unsigned="true"
+                nullable="false"
+                default="4"
+                comment="Severity" />
+        <column xsi:type="smallint"
+                name="status"
+                unsigned="true"
+                nullable="false"
+                default="0"
+                comment="Status" />
+        <column xsi:type="varchar"
+                name="message"
+                length="255"
+                nullable="false"
+                comment="Notification message" />
+        <column xsi:type="text"
+                name="details"
+                nullable="false"
+                comment="Notification details" />
+        <column xsi:type="timestamp"
+                name="date"
+                nullable="false"
+                default="CURRENT_TIMESTAMP"
+                on_update="false"
+                comment="Date created" />
+        <column xsi:type="tinyint"
+                name="muted"
+                nullable="false"
+                default="0"
+                comment="Whether notification has been muted" />
+        <column xsi:type="tinyint"
+                name="delete_after_view"
+                nullable="false"
+                default="0"
+                comment="Whether notification should be deleted after appearing in notifications bar" />
+        <index referenceId="IDX_KLEVU_NOTIFICATION_TYPE" indexType="btree">
+            <column name="type"/>
+        </index>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+</schema>

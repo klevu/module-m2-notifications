@@ -1,0 +1,106 @@
+<?php
+
+/**
+ * Copyright © Klevu Oy. All rights reserved. See LICENSE.txt for license details.
+ */
+
+declare(strict_types=1);
+
+use Klevu\Configuration\Block\Adminhtml\Config\Form\KlevuFieldset;
+use Klevu\Notifications\ViewModel\System\Config\Information\Notifications as NotificationsViewModel;
+
+/**
+ * @var KlevuFieldset $block
+ * @var NotificationsViewModel $viewModel
+ */
+$viewModel = $block->getViewModel();
+$escaper = $viewModel->getEscaper();
+
+$notifications = $viewModel->getNotifications();
+?>
+
+<?php foreach ($notifications as $notification): ?>
+    <div class="message <?= $escaper->escapeHtmlAttr($viewModel->getMessageClassForNotification($notification)) ?>">
+        <p>
+            <?= $escaper->escapeHtml($notification->getMessage()) ?>
+        </p>
+        <div class="notification-meta">
+            <small class="notification-date"><?= $escaper->escapeHtml($notification->getDate()) ?></small>
+            <div class="notification-actions">
+                <?php if ($notification->getDetails()): ?>
+                    <span class="notification-details-toggle">
+                        <a href="#"><?= $escaper->escapeHtml(__('View Details')->render()) ?></a> |
+                    </span>
+                <?php endif; ?>
+
+                <?php if ($notification->isMuted()): ?>
+                    <a href="<?= $escaper->escapeUrl($viewModel->getUnmuteUrlForNotification($notification)) ?>"
+                       class="notification-actions_mute-toggle"
+                    ><?= $escaper->escapeHtml(__('Unmute')->render()) ?></a>
+                <?php else: ?>
+                    <a href="<?= $escaper->escapeUrl($viewModel->getMuteUrlForNotification($notification)) ?>"
+                       class="notification-actions_mute-toggle"
+                    ><?= $escaper->escapeHtml(__('Mute')->render()) ?></a>
+                <?php endif; ?>
+            </div>
+            <?php if ($notification->getDetails()): ?>
+                <div class="notification-details">
+                    <p>
+                        <small>
+                            <?= nl2br($escaper->escapeHtml($notification->getDetails())) ?>
+                        </small>
+                    </p>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+<?php endforeach; ?>
+
+<style type="text/css">
+    .notification-meta { width: 100%; padding-bottom: 10px; }
+    .notification-meta .notification-date { float: left; }
+    .notification-meta .notification-actions { float: right; }
+    .notification-meta .notification-details {
+        clear: both;
+        width: 100%;
+        padding-top: 10px;
+        display: none;
+    }
+    .notification-meta .notification-details p {
+        margin: 0;
+    }
+    .message.muted { background: #F8F8F8 !important; }
+</style>
+
+<script>
+    require(
+        ['jquery'],
+        function ($) {
+            $('.notification-details-toggle a').on('click', function (event) {
+                event.stopPropagation();
+                event.preventDefault();
+
+                $(event.target).closest('.notification-details-toggle').hide();
+                $(event.target).closest('.message').find('.notification-details').slideDown();
+            });
+            $('.notification-actions_mute-toggle').on('click', function (event) {
+                event.stopPropagation();
+                event.preventDefault();
+
+                $.ajax({
+                    url: event.target.href,
+                    data: {
+                        'form_key': FORM_KEY
+                    },
+                    showLoader: true
+                }).done(function (data) {
+                    if (data.success) {
+                        $(event.target).closest('.message').fadeOut();
+                    } else {
+                        console.warn('Could not update Klevu Notification', data);
+                    }
+                });
+            });
+        }
+    );
+</script>

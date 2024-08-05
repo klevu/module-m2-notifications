@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<!-- Copyright © Klevu Oy. All rights reserved. See LICENSE.txt for license details. -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="Klevu_Notifications">
+        <sequence>
+            <module name="Magento_Framework"/>
+            <module name="Magento_AdminNotification"/>
+            <module name="Magento_Backend"/>
+            <module name="Magento_AsynchronousOperations"/>
+            <module name="Magento_Ui"/>
+            <module name="Klevu_Configuration"/>
+        </sequence>
+    </module>
+</config>

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+
+<!-- Copyright © Klevu Oy. All rights reserved. See LICENSE.txt for license details. -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_include.xsd">
+    <group id="notifications"
+           translate="label"
+           sortOrder="8"
+           showInDefault="1"
+           showInWebsite="1"
+           showInStore="1">
+        <label>Notifications</label>
+        <attribute type="expanded">1</attribute>
+        <frontend_model>Magento\Config\Block\System\Config\Form\Fieldset</frontend_model>
+
+        <field id="unread_notifications" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <frontend_model>Klevu\Notifications\Block\Adminhtml\Config\Information\UnreadNotifications</frontend_model>
+        </field>
+
+        <group id="muted_notifications_group"
+               translate="label"
+               sortOrder="10"
+               showInDefault="1"
+               showInWebsite="1"
+               showInStore="1">
+            <label>Muted Notifications</label>
+            <attribute type="expanded">0</attribute>
+            <frontend_model>Magento\Config\Block\System\Config\Form\Fieldset</frontend_model>
+
+            <field id="muted_notifications" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <frontend_model>Klevu\Notifications\Block\Adminhtml\Config\Information\MutedNotifications</frontend_model>
+            </field>
+        </group>
+    </group>
+</config>

@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+
+<!-- Copyright © Klevu Oy. All rights reserved. See LICENSE.txt for license details. -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <type name="Magento\AdminNotification\Model\ResourceModel\System\Message\Collection\Synchronized">
+        <plugin name="Klevu_Notifications::addNotifications"
+                type="Klevu\Notifications\Plugin\Magento\AdminNotification\Model\ResourceModel\System\Message\Collection\Synchronized\AddNotificationsPlugin"
+                sortOrder="999"/>
+    </type>
+
+    <virtualType name="Klevu\Notifications\ViewModel\System\Config\Information\Notifications\Unread"
+                 type="Klevu\Notifications\ViewModel\System\Config\Information\Notifications">
+        <arguments>
+            <argument name="muted" xsi:type="boolean">false</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Klevu\Notifications\ViewModel\System\Config\Information\Notifications\Muted"
+                 type="Klevu\Notifications\ViewModel\System\Config\Information\Notifications">
+        <arguments>
+            <argument name="muted" xsi:type="boolean">true</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Klevu\Notifications\Block\Adminhtml\Config\Information\UnreadNotifications"
+          type="Klevu\Configuration\Block\Adminhtml\Config\Form\KlevuFieldset">
+        <arguments>
+            <argument name="blockName" xsi:type="string">klevu_unread_notifications</argument>
+            <argument name="template"
+                      xsi:type="string">Klevu_Notifications::system/config/information/notifications.phtml</argument>
+            <argument name="viewModel"
+                      xsi:type="object">Klevu\Notifications\ViewModel\System\Config\Information\Notifications\Unread</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Klevu\Notifications\Block\Adminhtml\Config\Information\MutedNotifications"
+          type="Klevu\Configuration\Block\Adminhtml\Config\Form\KlevuFieldset">
+        <arguments>
+            <argument name="blockName" xsi:type="string">klevu_muted_notifications</argument>
+            <argument name="template"
+                      xsi:type="string">Klevu_Notifications::system/config/information/notifications.phtml</argument>
+            <argument name="viewModel"
+                      xsi:type="object">Klevu\Notifications\ViewModel\System\Config\Information\Notifications\Muted</argument>
+        </arguments>
+    </virtualType>
+</config>

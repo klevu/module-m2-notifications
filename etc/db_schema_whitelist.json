@@ -1,0 +1,22 @@
+{
+    "klevu_notification": {
+        "column": {
+            "id": true,
+            "type": true,
+            "acl_resource": true,
+            "severity": true,
+            "status": true,
+            "message": true,
+            "details": true,
+            "date": true,
+            "muted": true,
+            "delete_after_view": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        },
+        "index": {
+            "IDX_KLEVU_NOTIFICATION_TYPE": true
+        }
+    }
+}
