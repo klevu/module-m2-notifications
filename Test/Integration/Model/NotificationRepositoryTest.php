@@ -328,7 +328,6 @@ class NotificationRepositoryTest extends TestCase
 
     /**
      * @magentoDbIsolation enabled
-     * @group wip
      */
     public function testGetList_WithResults(): void
     {
