@@ -224,7 +224,7 @@ class Notification extends AbstractModel implements NotificationInterface
         $date = $this->getData(static::FIELD_DATE);
         if (!is_string($date)) {
             $date = (string)$date;
-            $this->setData($date);
+            $this->setDate($date);
         }
 
         return $date;
