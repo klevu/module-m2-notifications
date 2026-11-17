@@ -12,8 +12,8 @@ use Klevu\Configuration\Test\Integration\Controller\Adminhtml\GetAdminFrontNameT
 use Klevu\Notifications\Api\Data\NotificationInterfaceFactory;
 use Klevu\Notifications\Api\NotificationRepositoryInterface;
 use Klevu\Notifications\Controller\Adminhtml\Notification\Unmute;
-use Klevu\TestFixtures\Traits\ObjectInstantiationTrait;
-use Klevu\TestFixtures\Traits\TestImplementsInterfaceTrait;
+use Klevu\Notifications\Test\Unit\Traits\ObjectInstantiationTrait;
+use Klevu\Notifications\Test\Unit\Traits\TestImplementsInterfaceTrait;
 use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\Exception\AuthenticationException;
 use Magento\Framework\ObjectManagerInterface;
