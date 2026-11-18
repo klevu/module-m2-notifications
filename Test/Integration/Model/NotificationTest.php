@@ -10,9 +10,9 @@ namespace Klevu\Notifications\Test\Integration\Model;
 
 use Klevu\Notifications\Api\Data\NotificationInterface;
 use Klevu\Notifications\Model\Notification;
-use Klevu\TestFixtures\Traits\ObjectInstantiationTrait;
-use Klevu\TestFixtures\Traits\TestImplementsInterfaceTrait;
-use Klevu\TestFixtures\Traits\TestInterfacePreferenceTrait;
+use Klevu\Notifications\Test\Unit\Traits\ObjectInstantiationTrait;
+use Klevu\Notifications\Test\Unit\Traits\TestImplementsInterfaceTrait;
+use Klevu\Notifications\Test\Unit\Traits\TestInterfacePreferenceTrait;
 use Magento\Framework\Notification\MessageInterface;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\TestFramework\ObjectManager;

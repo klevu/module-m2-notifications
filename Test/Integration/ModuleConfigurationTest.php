@@ -57,7 +57,7 @@ class ModuleConfigurationTest extends TestCase
     public function testModuleIsEnabledInTheRealEnvironment(): void
     {
         $dirList = $this->objectManager->create(DirectoryList::class, [
-            'root' => BP,
+            'root' => constant('BP'),
         ]);
         $configReader = $this->objectManager->create(DeploymentConfigReader::class, [
             'dirList' => $dirList,

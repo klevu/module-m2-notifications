@@ -13,7 +13,7 @@ use Klevu\Notifications\Api\Data\NotificationInterfaceFactory;
 use Klevu\Notifications\Api\NotificationRepositoryInterface;
 use Klevu\Notifications\Model\Notification;
 use Klevu\Notifications\Plugin\Magento\AdminNotification\Model\ResourceModel\System\Message\Collection\Synchronized\AddNotificationsPlugin; // phpcs:ignore Generic.Files.LineLength.TooLong
-use Klevu\TestFixtures\Traits\ObjectInstantiationTrait;
+use Klevu\Notifications\Test\Unit\Traits\ObjectInstantiationTrait;
 use Magento\AdminNotification\Model\ResourceModel\System\Message\Collection\SynchronizedFactory as SynchronizedCollectionFactory; // phpcs:ignore Generic.Files.LineLength.TooLong
 use Magento\Framework\Notification\MessageList;
 use Magento\Framework\ObjectManagerInterface;
